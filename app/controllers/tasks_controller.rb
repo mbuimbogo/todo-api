@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
         rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-      
+        wrap_parameters format: []
+
         # GET /tasks
         def index
           tasks = Task.all
