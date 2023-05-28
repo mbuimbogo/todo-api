@@ -8,3 +8,6 @@
 puts "Hey I am seeding"
 Task.create!(description: 'Task 1', completed: false)
 Task.create!(description: 'Task 2', completed: true)
+Task.create!(description: 'Task 4', completed: false)
+Task.create!(description: 'Task 5', completed: true)
+puts "Hey I am done"
