@@ -80,10 +80,10 @@ production:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-production:
-  <<: *default
-  database: task_todo_production
-  username: task_todo
-  password: <%= ENV["TASK_TODO_DATABASE_PASSWORD"] %>
+# production:
+#   <<: *default
+#   database: task_todo_production
+#   username: task_todo
+#   password: <%= ENV["TASK_TODO_DATABASE_PASSWORD"] %>
 
 
