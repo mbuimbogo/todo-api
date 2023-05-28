@@ -3,6 +3,15 @@ class TasksController < ApplicationController
         wrap_parameters format: []
         rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
+        def options
+            # Set the appropriate response headers to allow CORS
+            response.headers['Access-Control-Allow-Origin'] = '*'
+            response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PATCH, DELETE, OPTIONS'
+            response.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept'
+        
+            head :ok
+          end
+
         # GET /tasks
         def index
           tasks = Task.all
@@ -16,10 +25,10 @@ class TasksController < ApplicationController
         end
       
         # GET /tasks/:id
-        # def show
-        #   task = find_task
-        #   render json: task
-        # end
+        def show
+          task = find_task
+          render json: task
+        end
       
         # PATCH /tasks/:id
         def update
@@ -42,7 +51,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.permit(:description, :completed)
+    params.permit(:id, :description, :completed)
   end
 
   def render_not_found_response
